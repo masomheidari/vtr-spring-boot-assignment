@@ -1,0 +1,2 @@
+INSERT INTO public.job VALUES ('d324c4d8-0199-4374-acfd-fb5b3070bab2', 'Assistant Doctor Dermatology', 'Long detailed description');
+INSERT INTO public.job VALUES ('686f6da3-40b8-4aa6-8520-688c86f7714d', 'Doctor Cardiology', 'Very long detailed description');
