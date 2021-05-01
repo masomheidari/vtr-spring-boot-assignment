@@ -35,7 +35,7 @@ public class JobRepositoryIT {
 
         jobRepository.saveAndFlush(job);
 
-        Job resultJob = jobRepository.findById(id).orElseThrow();
+        Job resultJob = jobRepository.findById(id).orElseThrow(() -> new JobNotFoundException(id));
 
         assertEquals(job.getId(), resultJob.getId());
         assertEquals(job.getName(), resultJob.getName());
