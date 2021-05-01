@@ -4,21 +4,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.InjectMocks;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.UUID;
 
-import static org.hamcrest.Matchers.any;
-import static org.mockito.Mockito.when;
+
 
 @ExtendWith(MockitoExtension.class)
-
-
 class JobControllerTest {
 
 
@@ -38,9 +35,9 @@ class JobControllerTest {
         job.setId(id);
         job.setName("test-name");
         job.setDescription("test-description");
-        //when(jobRepository.save(any(Job.class))).thenReturn(job);
+        ResponseEntity<Object> responseEntity =jobController.createJob(job);
+        assertThat(responseEntity.getStatusCodeValue()).isEqualTo(201);
+        assertThat(responseEntity.getHeaders().getLocation().getPath()).isEqualTo("/1");
 
     }
-
-
 }
